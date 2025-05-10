@@ -1,4 +1,4 @@
-# kairos-presence2
+# 카이로스-presence2
 // 앱/layout.tsx
 
 기본 함수 RootLayout 내보내기({
@@ -87,3 +87,37 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+// app/layout.tsx
+
+export default function RootLayout({ children, }: { children: React.ReactNode }) { return ( <html lang="en"> <body className="bg-white text-black font-sans"> {children} </body> </html> ) }
+
+// lib/supabase.ts
+
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string; const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// tailwind.config.ts
+
+import type { Config } from 'tailwindcss';
+
+const config: = {content: [./app/**/*.{js,ts,jx,tsx}'], 테마: { extend: {}, }, 플러그인: [], };
+
+기본 구성 내보내기;
+
+// 유틸리티/index.ts
+
+내보내기 함수 형식Date(날짜: 문자열): 문자열 {const d = new Date(날짜); d.toLocaleDateString('ko-KR'), {년: 'numeric', 월: '길다', 일: 'numeric', }); }
+
+// 패키지.제이슨
+
+{ "name": "kairos-presence", "version": "1.0.0", "scripts": { "dev": "next dev", "build": "next build", "start": "next start" }, "dependencies": { "@supabase/supabase-js": "^2.39.7", "next": "14.1.3", "react": "18.2.0", "react-dom": "18.2.0" }, "devDependencies": { "tailwindcss": "^3.4.1", "autoprefixer": "^10.4.15", "postcss": "^8.4.24", "typescript": "^5.3.3" } }
+
+// next.config.js
+
+/** @type {import('next').NextConfig} */ const nextConfig = {reactStricMode: true, swcMinify: true, };
+
+module.exports = nextConfig;
+
